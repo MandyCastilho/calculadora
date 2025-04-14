@@ -3,46 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Uma calculadora online simples e eficiente para realizar operações matemáticas básicas como soma, subtração, multiplicação e divisão.">
-    <meta name="keywords" content="calculadora, matemática, operações básicas, soma, subtração, multiplicação, divisão, ferramenta online">
+    <meta name="description" content="Uma calculadora online simples e eficiente para realizar operações matemáticas básicas e científicas.">
+    <meta name="keywords" content="calculadora, matemática, científica, operações básicas, soma, subtração, multiplicação, divisão, raiz quadrada, potência, log, seno, cosseno, tangente">
     <meta name="author" content="Amanda Ramos Castilho">
-    
+
     <link rel="icon" href="img/calculadora.png" type="image/png">
     <link rel="stylesheet" href="style.css">
-    
-    <title>Calculadora Básica</title>
+
+    <title>Calculadora Científica</title>
 </head>
 
 <body>
 
     <main class="calculadora">
-
         <h2>Calculadora</h2>
         <input type="text" id="display" disabled aria-label="Visor da calculadora">
 
         <div class="botoes">
             <button type="button" onclick="limparDisplay()" aria-label="Limpar visor">C</button>
-            <button type="button" onclick="adicionarNumero('1')" aria-label="Número 1">1</button>
-            <button type="button" onclick="adicionarNumero('2')" aria-label="Número 2">2</button>
-            <button type="button" onclick="adicionarNumero('3')" aria-label="Número 3">3</button>
-            <button type="button" onclick="adicionarOperacao('+')" aria-label="Soma">+</button>
-            <button type="button" onclick="adicionarNumero('4')" aria-label="Número 4">4</button>
-            <button type="button" onclick="adicionarNumero('5')" aria-label="Número 5">5</button>
-            <button type="button" onclick="adicionarNumero('6')" aria-label="Número 6">6</button>
-            <button type="button" onclick="adicionarOperacao('-')" aria-label="Subtração">-</button>
-            <button type="button" onclick="adicionarNumero('7')" aria-label="Número 7">7</button>
-            <button type="button" onclick="adicionarNumero('8')" aria-label="Número 8">8</button>
-            <button type="button" onclick="adicionarNumero('9')" aria-label="Número 9">9</button>
-            <button type="button" onclick="adicionarOperacao('*')" aria-label="Multiplicação">×</button>
-            <button type="button" onclick="adicionarNumero('0')" aria-label="Número 0">0</button>
-            <button type="button" onclick="adicionarPonto('.')" aria-label="Ponto decimal">.</button>
-            <button type="button" onclick="calcularResultado()" aria-label="Calcular resultado">=</button>
-            <button type="button" onclick="adicionarOperacao('/')" aria-label="Divisão">÷</button>
+            <button type="button" onclick="backspace()" aria-label="Apagar caractere">⌫</button>
+            <button type="button" onclick="alternarSinal()" aria-label="Alternar sinal">±</button>
+            <button type="button" onclick="adicionarPorcentagem()" aria-label="Porcentagem">%</button>
+
+            <button type="button" onclick="adicionarNumero('1')">1</button>
+            <button type="button" onclick="adicionarNumero('2')">2</button>
+            <button type="button" onclick="adicionarNumero('3')">3</button>
+            <button type="button" onclick="adicionarOperacao('+')">+</button>
+
+            <button type="button" onclick="adicionarNumero('4')">4</button>
+            <button type="button" onclick="adicionarNumero('5')">5</button>
+            <button type="button" onclick="adicionarNumero('6')">6</button>
+            <button type="button" onclick="adicionarOperacao('-')">-</button>
+
+            <button type="button" onclick="adicionarNumero('7')">7</button>
+            <button type="button" onclick="adicionarNumero('8')">8</button>
+            <button type="button" onclick="adicionarNumero('9')">9</button>
+            <button type="button" onclick="adicionarOperacao('*')">×</button>
+
+            <button type="button" onclick="adicionarNumero('0')">0</button>
+            <button type="button" onclick="adicionarPonto()">.</button>
+            <button type="button" onclick="calcularResultado()">=</button>
+            <button type="button" onclick="adicionarOperacao('/')">÷</button>
+
+            <button type="button" onclick="calcularRaiz()">√</button>
+            <button type="button" onclick="calcularPotencia()">x²</button>
+            <button type="button" onclick="calcularLog()">log</button>
+            <button type="button" onclick="calcularTrigonometria('sin')">sin</button>
+            <button type="button" onclick="calcularTrigonometria('cos')">cos</button>
+            <button type="button" onclick="calcularTrigonometria('tan')">tan</button>
         </div>
-        
     </main>
 
-    <script src="script.js"></script>
+    <section class="historico">
+        <h3>Histórico</h3>
+        <ul id="listaHistorico"></ul>
+        <button onclick="limparHistorico()">Limpar Histórico</button>
+    </section>
 
+    <script src="script.js"></script>
 </body>
 </html>
