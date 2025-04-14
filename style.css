@@ -8,32 +8,39 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: rgb(135, 206, 250); /* Azul claro */
+    background: linear-gradient(135deg, #87cefa, #b3e5fc); /* Gradiente azul claro */
+    color: #333;
+    animation: fadeIn 1s ease-in-out;
 }
 
 .calculadora {
-    background-color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
     padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
     text-align: center;
     width: 100%;
-    max-width: 280px;
+    max-width: 320px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease-in-out;
 }
 
 /* Estilização do título */
 h2 {
     margin-bottom: 15px;
-    font-size: 1.5em;
-    color: rgb(102, 204, 255); /* Azul mais forte */
+    font-size: 1.8em;
+    color: #ffffff;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
 }
 
-/* Estilização do visor */
+/* Visor */
 #display {
     width: 100%;
     height: 60px;
@@ -43,52 +50,103 @@ h2 {
     border: none;
     outline: none;
     background-color: rgb(153, 255, 204); /* Verde claro */
-    border-radius: 5px;
-    box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    box-shadow: inset 2px 2px 6px rgba(0, 0, 0, 0.2);
+    margin-bottom: 15px;
+    color: #003f2f;
 }
 
-/* Layout dos botões */
+/* Grid dos botões */
 .botoes {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 8px;
-    margin-top: 15px;
+    gap: 10px;
 }
 
-/* Estilização dos botões */
+/* Botões padrão */
 button {
-    width: 100%;
     height: 55px;
-    font-size: 1.4em;
+    font-size: 1.2em;
     font-weight: bold;
     border: none;
     cursor: pointer;
-    background-color: rgba(128, 128, 128, 0.507); 
-    border-radius: 8px;
-    transition: 0.2s;
+    border-radius: 12px;
+    background-color: rgba(128, 128, 128, 0.4);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.1s ease, background-color 0.2s ease;
+    backdrop-filter: blur(4px);
+    position: relative;
 }
 
-/* Efeito ao passar o mouse */
-button:hover {
-    background-color: gray; 
+/* Ícones usando emojis como exemplo */
+button:before {
+    content: attr(data-icon);
+    position: absolute;
+    left: 8px;
+    font-size: 0.9em;
+    opacity: 0.6;
 }
 
-/* Efeito ao pressionar */
+/* Animação ao clicar */
 button:active {
     transform: scale(0.95);
+    box-shadow: inset 0 0 5px rgba(255, 255, 255, 0.2);
 }
 
-button:nth-child(1),
-button:nth-child(5),
-button:nth-child(9),
-button:nth-child(13),
-button:nth-child(15),
-button:nth-child(16),
-button:nth-child(17) {
+/* Botões de operação */
+button.operador {
     background-color: rgb(255, 0, 128); /* Rosa vibrante */
     color: white;
 }
 
-button:nth-child(14) {
-    
+/* Botão de igual com destaque */
+button.igual {
+    background: linear-gradient(to right, #ff4081, #ec407a);
+    color: white;
 }
+
+/* Histórico */
+.historico {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    width: 90%;
+    max-width: 320px;
+    color: #fff;
+    text-align: left;
+    backdrop-filter: blur(10px);
+}
+
+.historico h3 {
+    margin-bottom: 10px;
+    font-size: 1.3em;
+}
+
+#listaHistorico {
+    max-height: 120px;
+    overflow-y: auto;
+    list-style: none;
+    padding-left: 10px;
+}
+
+#listaHistorico li {
+    font-size: 0.95em;
+    margin-bottom: 5px;
+}
+
+/* Animações */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
