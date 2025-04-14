@@ -20,10 +20,10 @@
         <input type="text" id="display" disabled aria-label="Visor da calculadora">
 
         <div class="botoes">
-            <button type="button" onclick="limparDisplay()" data-icon="🧼" aria-label="Limpar visor">C</button>
-            <button type="button" onclick="backspace()" data-icon="⬅️" aria-label="Apagar caractere">⌫</button>
-            <button type="button" onclick="alternarSinal()" data-icon="±" aria-label="Alternar sinal">±</button>
-            <button type="button" onclick="adicionarPorcentagem()" data-icon="%" aria-label="Porcentagem">%</button>
+            <button type="button" onclick="limparDisplay()" class="diferente" data-icon="🧼" aria-label="Limpar visor">C</button>
+            <button type="button" onclick="backspace()" class="operador" data-icon="⬅️" aria-label="Apagar caractere">⌫</button>
+            <button type="button" onclick="alternarSinal()" class="operador" data-icon="±" aria-label="Alternar sinal">±</button>
+            <button type="button" onclick="adicionarPorcentagem()" class="operador" data-icon="%" aria-label="Porcentagem">%</button>
 
             <button type="button" onclick="adicionarNumero('1')" data-icon="1">1</button>
             <button type="button" onclick="adicionarNumero('2')" data-icon="2">2</button>
@@ -42,15 +42,15 @@
 
             <button type="button" onclick="adicionarNumero('0')" data-icon="0">0</button>
             <button type="button" onclick="adicionarPonto()" data-icon=".">.</button>
-            <button type="button" onclick="calcularResultado()" class="igual" data-icon="=">=</button>
+            <button type="button" onclick="calcularResultado()" class="diferente" data-icon="=">=</button>
             <button type="button" onclick="adicionarOperacao('/')" class="operador" data-icon="➗">÷</button>
 
-            <button type="button" onclick="calcularRaiz()" data-icon="√">√</button>
-            <button type="button" onclick="calcularPotencia()" data-icon="²">x²</button>
-            <button type="button" onclick="calcularLog()" data-icon="log">log</button>
-            <button type="button" onclick="calcularTrigonometria('sin')" data-icon="sin">sin</button>
-            <button type="button" onclick="calcularTrigonometria('cos')" data-icon="cos">cos</button>
-            <button type="button" onclick="calcularTrigonometria('tan')" data-icon="tan">tan</button>
+            <button type="button" onclick="calcularRaiz()" class="operador" data-icon="√">√</button>
+            <button type="button" onclick="calcularPotencia()" class="operador" data-icon="²">x²</button>
+            <button type="button" onclick="calcularLog()" class="operador" data-icon="log">log</button>
+            <button type="button" onclick="calcularTrigonometria('sin')" class="operador" data-icon="sin">sin</button>
+            <button type="button" onclick="calcularTrigonometria('cos')" class="operador" data-icon="cos">cos</button>
+            <button type="button" onclick="calcularTrigonometria('tan')" class="operador" data-icon="tan">tan</button>
         </div>
 
         <!-- Seção de Histórico dentro da calculadora -->

@@ -1,6 +1,5 @@
 @charset "UTF-8";
 
-/* Reset básico */
 * {
     margin: 0;
     padding: 0;
@@ -8,107 +7,134 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     background: linear-gradient(135deg, #045071, #fd6084); /* Gradiente futurista */
+    background-size: 400% 400%;
+    animation: gradientBackground 10s ease infinite;
+    overflow: hidden; /* Impede barras de rolagem externas */
+}
+
+@keyframes gradientBackground {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 .calculadora {
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(255, 255, 255, 0.95);
     padding: 20px;
     border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
     width: 100%;
-    max-width: 320px;
+    max-width: 240px; /* Largura fixa para a calculadora */
+    height: auto;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
     position: relative;
+    backdrop-filter: blur(10px);
+    overflow: hidden; /* Impede rolagem interna */
+    max-height: 100%; /* Impede que ultrapasse a altura da tela */
 }
 
-/* Estilização do título */
 h2 {
     margin-bottom: 15px;
-    font-size: 1.5em;
+    font-size: 1.6em;
     color: #045071; /* Azul petróleo */
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 700;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-/* Estilização do visor */
 #display {
     width: 100%;
-    height: 60px;
-    font-size: 1.8em;
+    height: 50px; /* Ajuste na altura do visor */
+    font-size: 1.5em; /* Ajuste no tamanho da fonte */
     text-align: right;
-    padding: 10px;
+    padding: 8px;
     border: none;
     outline: none;
     background-color: #99ffcc; /* Verde claro */
-    border-radius: 8px;
+    border-radius: 10px;
     box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Layout dos botões */
+#display:focus {
+    background-color: #7fffd4; /* Mudança de cor ao focar */
+}
+
 .botoes {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 8px;
-    margin-top: 20px;
+    gap: 6px; /* Menor espaçamento entre os botões */
+    margin-top: 15px;
+    width: 100%;
 }
 
-/* Estilização dos botões */
 button {
     width: 100%;
-    height: 55px;
-    font-size: 1.4em;
+    height: 45px; /* Tamanho reduzido dos botões */
+    font-size: 1.3em; /* Fonte menor nos botões */
     font-weight: bold;
     border: none;
     cursor: pointer;
-    background-color: rgba(128, 128, 128, 0.5); 
-    border-radius: 10px;
-    transition: 0.2s;
+    background-color: rgba(128, 128, 128, 0.5);
+    border-radius: 12px;
+    transition: 0.3s;
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.1);
+    color: white;
 }
 
-/* Efeito ao passar o mouse */
 button:hover {
-    background-color: rgba(128, 128, 128, 0.7); 
+    background-color: rgba(128, 128, 128, 0.8);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2);
 }
 
-/* Efeito ao pressionar */
 button:active {
     transform: scale(0.95);
 }
 
-/* Estilização dos botões de operação */
 button.operador {
     background-color: rgb(255, 0, 128); /* Rosa vibrante */
     color: white;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
 }
 
-/* Estilização do botão de igual */
-button.igual {
+button.diferente {
     background-color: #045071; /* Azul petróleo */
     color: white;
+    font-size: 1.6em;
 }
 
-/* Estilização do histórico */
 .historico {
     margin-top: 20px;
-    background-color: rgba(255, 255, 255, 0.8);
-    padding: 10px;
-    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.85);
+    padding: 12px;
+    border-radius: 10px;
     width: 100%;
-    max-height: 150px;
-    overflow-y: auto;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(8px);
 }
 
 .historico h3 {
-    font-size: 1.2em;
+    font-size: 1.3em;
     margin-bottom: 10px;
     color: #045071;
+    font-weight: 700;
+    letter-spacing: 1px;
 }
 
 .historico ul {
@@ -117,17 +143,22 @@ button.igual {
 }
 
 .historico button {
-    margin-top: 10px;
+    margin-top: 12px;
     background-color: rgb(255, 0, 128); /* Rosa vibrante */
     color: white;
-    border-radius: 5px;
-    padding: 10px;
+    border-radius: 8px;
     width: 100%;
+    font-size: 1.2em;
     cursor: pointer;
+    transition: 0.3s;
 }
 
 .historico button:hover {
     background-color: rgb(255, 30, 140); /* Tom mais intenso de rosa vibrante */
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
+
+
 
 
