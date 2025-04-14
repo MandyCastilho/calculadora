@@ -90,7 +90,7 @@ button {
     font-weight: bold;
     border: none;
     cursor: pointer;
-    background-color: rgba(128, 128, 128, 0.5);
+    background-color: rgba(128, 128, 128, 0.76);
     border-radius: 12px;
     transition: 0.3s;
     box-shadow: 0 5px 12px rgba(0, 0, 0, 0.1);
