@@ -54,8 +54,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 return;
             }
             let resultado = eval(expressao);
-            salvarHistorico(`${expressao} = ${resultado}`);
-            display.value = resultado;
+            let resultadoFormatado = Number(resultado.toFixed(4)); // remove zeros desnecessários tipo 3.0000
+            salvarHistorico(`${expressao} = ${resultadoFormatado}`);
+            display.value = resultadoFormatado;
         } catch (e) {
             display.value = "Erro";
         }
@@ -125,8 +126,10 @@ document.addEventListener("DOMContentLoaded", () => {
     // Suporte ao teclado
     document.addEventListener("keydown", (event) => {
         const key = event.key;
-        if (!isNaN(key) || "+-*/".includes(key)) {
+        if (!isNaN(key)) {
             adicionarNumero(key);
+        } else if ("+-*/".includes(key)) {
+            adicionarOperacao(key);
         } else if (key === "Enter") {
             calcularResultado();
         } else if (key === "Backspace") {
